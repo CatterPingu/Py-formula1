@@ -26,8 +26,13 @@ def display_data(headers, data):
     print(table)
 
 def main():
-    # Example of using Inquirer for input
-    questions = [inquirer.List("action", message="Choose an action", choices=["Display Standings", "Quit"])]
+    questions = [inquirer.List("action", message="Choose an action", choices=["Display Upcoming Races",
+                                                                              "Display Driver Standings",
+                                                                              "Display Constructor Standings",
+                                                                              "Race Results",
+                                                                              "Driver Information",
+                                                                              "Constructor Information",
+                                                                              "Quit"])]
     while True:
         answer = inquirer.prompt(questions)
         action = answer["action"]
