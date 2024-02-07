@@ -10,8 +10,7 @@ app = typer.Typer()
 
 @app.command()
 def main():
-    questions = [inquirer.List("action", message="Choose an action", choices=["Display Upcoming Races",
-                                                                              "Display Driver Standings",
+    questions = [inquirer.List("action", message="Choose an action", choices=["Display Driver Standings",
                                                                               "Display Constructor Standings",
                                                                               "Race Results",
                                                                               "Driver Information",
