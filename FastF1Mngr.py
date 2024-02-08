@@ -28,3 +28,23 @@ class FastF1Mngr:
         selected_df = pd.DataFrame(selected_data)
 
         return selected_df
+
+    def fetch_constructor_standings(self, year):
+
+        # Get constructor standings for the specified season
+        standings_response = self.ergast.get_constructor_standings(season=year)
+
+        # Extract and parse the content from the response
+        try:
+            standings_data = standings_response.content[0]  # Access the first element of the list
+        except:
+            raise IndexError
+
+        # Extracting specific columns from the standings data
+        selected_columns = ['position', 'points', 'wins', 'constructorName']
+        selected_data = standings_data[selected_columns]
+
+        # Create DataFrame with selected data
+        selected_df = pd.DataFrame(selected_data)
+
+        return selected_df

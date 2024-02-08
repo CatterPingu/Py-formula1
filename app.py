@@ -36,6 +36,20 @@ def main():
                 display_data(standings_data)
             except IndexError:
                 typer.echo(f"\nNo data for {year} exists\n",color=True)
+        elif action == "Display Constructor Standings":
+            while True:
+                year = typer.prompt("Enter the year")
+                if is_valid_year(year):
+                    break
+                else:
+                    typer.echo("Invalid year. Please enter a valid year between 1950 and 2100.")
+            try:
+                with yaspin(text="Fetching standings data...", color="yellow") as spinner:
+                    standings_data = fastf1.fetch_constructor_standings(year)
+                    spinner.ok("✔")
+                display_data(standings_data)
+            except IndexError:
+                typer.echo(f"\nNo data for {year} exists\n",color=True)
         elif action == "Quit":
             print("Exiting...")
             break
